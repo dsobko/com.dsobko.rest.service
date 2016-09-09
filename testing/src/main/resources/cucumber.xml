@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Application properties configuration-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="properties">
+            <props>
+                <prop key="env">local</prop>
+                <prop key="node">0</prop>
+                <prop key="host">null</prop>
+                <prop key="port">0</prop>
+            </props>
+        </property>
+    </bean>
+
+
+
+    <bean class="com.dsobko.test.services.MainService" id="mainService" />
+
+</beans>

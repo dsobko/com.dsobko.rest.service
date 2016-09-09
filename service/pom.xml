@@ -12,7 +12,7 @@
 
     <artifactId>service</artifactId>
 
-    <name>${project.groupId}.${project.artifactId}</name>
+    <name>${project.artifactId}</name>
 
 
 

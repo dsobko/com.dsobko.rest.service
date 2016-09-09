@@ -12,6 +12,121 @@
 
     <artifactId>testing</artifactId>
 
-    <name>${project.groupId}.${project.artifactId}</name>
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <host>null</host>
+        <port>0</port>
+        <suite>@none</suite>
+        <env>local</env>
+        <node>0</node>
+        <kotlin.version>1.0.3</kotlin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <configuration>
+                    <classpathScope>test</classpathScope>
+                    <executable>java</executable>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>BDD tests</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>test</phase>
+                        <configuration>
+                            <longClasspath>true</longClasspath>
+                            <arguments>
+                                <argument>-ea</argument>
+                                <argument>-Dhost=${host}</argument>
+                                <argument>-Dport=${port}</argument>
+                                <argument>-Dnode=${node}</argument>
+                                <argument>-classpath</argument>
+                                <classpath />
+                                <argument>cucumber.api.cli.Main</argument>
+                                <argument>classpath:</argument>
+                                <argument>--glue</argument>
+                                <argument>com.dsobko</argument>
+                                <argument>--format</argument>
+                                <argument>pretty</argument>
+                                <argument>--format</argument>
+                                <argument>json:${project.build.directory}/cucumber.json</argument>
+                                <argument>--tags</argument>
+                                <argument>${suite}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>process-test-sources</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
