@@ -12,44 +12,10 @@
 
     <artifactId>service</artifactId>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <host>null</host>
-        <port>0</port>
-        <suite>@none</suite>
-        <env>local</env>
-        <node>0</node>
-
-        <start-class>com.dsobko.rest.service.Application.java</start-class>
-
-        <cucumber.version>1.2.2</cucumber.version>
-        <kotlin.version>1.0.4</kotlin.version>
-    </properties>
-
-
     <name>${project.artifactId}</name>
 
 
-    <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-    </dependencies>
 
-    <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 
 
 </project>
