@@ -14,6 +14,7 @@ public class MainSteps extends AbstractSteps {
 
     @Given("^API is accessible$")
     public void apiIsAccessible() {
-        service.verifyApiIsAccessible();
+        service.initiate();
+        service.sendRequest();
     }
 }
