@@ -7,13 +7,11 @@ import org.springframework.data.annotation.Id
  */
 class Person {
 
-
     @Id
     var id: String? = null
 
     var description: String? = null
 
     var name: String? = null
-
 
 }

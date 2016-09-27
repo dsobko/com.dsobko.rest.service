@@ -13,6 +13,4 @@ interface PersonService {
 
     fun findById(id: String): PersonDTO
 
-    fun update(person: PersonDTO): PersonDTO
-
 }

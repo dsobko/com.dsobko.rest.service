@@ -3,6 +3,8 @@ package com.dsobko.rest.service;
 import com.dsobko.rest.service.errors.PersonNotFoundException;
 import com.dsobko.rest.service.objects.Person;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import static java.util.stream.Collectors.toList;
  */
 @Service
 public class MongoDBPersonService implements PersonService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoDBPersonService.class);
 
     private final PersonRepository repository;
 
@@ -31,6 +35,7 @@ public class MongoDBPersonService implements PersonService {
         persisted.setName(person.getName());
         persisted.setDescription(person.getDescription());
         persisted = repository.save(persisted);
+        LOGGER.info("Person created: id -> " + persisted.getId());
         return convertToDTO(persisted);
     }
 
@@ -38,6 +43,7 @@ public class MongoDBPersonService implements PersonService {
     public PersonDTO delete(@NotNull String id) {
         Person deleted = findPersonById(id);
         repository.delete(deleted);
+        LOGGER.info("Person deleted: id -> " + id);
         return convertToDTO(deleted);
     }
 
@@ -54,18 +60,10 @@ public class MongoDBPersonService implements PersonService {
     }
 
     @Override
-    public PersonDTO findById(String id) {
+    public PersonDTO findById(@NotNull String id) {
         Person found = findPersonById(id);
+        LOGGER.info("Person found: id -> " + id);
         return convertToDTO(found);
-    }
-
-    @Override
-    public PersonDTO update(PersonDTO person) {
-        Person updated = findPersonById(person.getId());
-        updated.setDescription(person.getDescription());
-        updated.setName(person.getName());
-        updated = repository.save(updated);
-        return convertToDTO(updated);
     }
 
     private Person findPersonById(String id) {

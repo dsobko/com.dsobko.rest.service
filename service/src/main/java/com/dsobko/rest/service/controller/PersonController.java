@@ -55,11 +55,6 @@ public class PersonController {
         return service.findById(id);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    PersonDTO update(@RequestBody @Valid PersonDTO personEntry) {
-        return service.update(personEntry);
-    }
-
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public void handlePersonNotFound(PersonNotFoundException ex) {
