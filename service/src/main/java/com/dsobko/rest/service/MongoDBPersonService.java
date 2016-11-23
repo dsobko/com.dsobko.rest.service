@@ -67,7 +67,7 @@ public class MongoDBPersonService implements PersonService {
     }
 
     private Person findPersonById(String id) {
-        Optional<Person> result = repository.findOne(id);
+        Optional<Person> result = Optional.of(repository.findOne(id));
         return result.orElseThrow(() -> new PersonNotFoundException(id));
 
     }

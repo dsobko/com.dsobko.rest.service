@@ -1,18 +1,19 @@
 package com.dsobko.rest.service
 
 import com.dsobko.rest.service.objects.Person
-import org.springframework.data.repository.Repository
-import java.util.*
+import org.springframework.data.repository.CrudRepository
 
 /**
  * Created by dsobko on 09/23/2016.
  */
-interface PersonRepository: Repository<Person, String> {
-    fun delete(deleted: Person)
+interface PersonRepository: CrudRepository<Person, String> {
 
-    fun findAll(): List<Person>
+    override fun delete(deleted: Person)
 
-    fun findOne(id: String): Optional<Person>
+    override fun findAll(): List<Person>
 
-    fun save(saved: Person): Person
+    override fun findOne(id: String): Person
+
+    override fun <S : Person?> save(entity: S): S
+
 }
