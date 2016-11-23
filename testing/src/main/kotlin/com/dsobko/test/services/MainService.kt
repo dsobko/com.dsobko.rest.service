@@ -4,10 +4,12 @@ import com.jayway.restassured.RestAssured
 import com.jayway.restassured.builder.RequestSpecBuilder
 import com.jayway.restassured.response.ValidatableResponse
 import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Component
 
 /**
  * Created by dsobko on 09/09/2016.
  */
+@Component
 open class MainService {
 
     private val LOGGER = LoggerFactory.getLogger(MainService::class.java)
