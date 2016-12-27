@@ -16,7 +16,7 @@ public class MainSteps {
 
     @Given("^API is accessible$")
     public void apiIsAccessible() {
-        service.initiate();
+        service.init();
         service.sendRequest();
     }
 }

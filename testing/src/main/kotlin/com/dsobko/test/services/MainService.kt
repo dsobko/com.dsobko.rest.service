@@ -1,8 +1,10 @@
 package com.dsobko.test.services
 
-import com.jayway.restassured.RestAssured
-import com.jayway.restassured.builder.RequestSpecBuilder
-import com.jayway.restassured.response.ValidatableResponse
+import io.restassured.RestAssured
+import io.restassured.RestAssured.requestSpecification
+import io.restassured.RestAssured.reset
+import io.restassured.builder.RequestSpecBuilder
+import io.restassured.response.ValidatableResponse
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
@@ -14,10 +16,9 @@ open class MainService {
 
     private val LOGGER = LoggerFactory.getLogger(MainService::class.java)
 
-    fun initiate() {
-        RestAssured.reset()
-        val spec = RequestSpecBuilder().setBaseUri("http://localhost:8080").build()
-        RestAssured.requestSpecification = spec
+    fun init() {
+        reset()
+        requestSpecification = RequestSpecBuilder().setBaseUri("http://localhost").setPort(8080).build()
         }
 
     open fun sendRequest(): ValidatableResponse? {

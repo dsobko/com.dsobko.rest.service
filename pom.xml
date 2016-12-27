@@ -22,11 +22,16 @@
 
 
     <properties>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>com.dsobko.rest.service.Application</start-class>
+
         <java.version>1.8</java.version>
         <kotlin.version>1.0.5-2</kotlin.version>
 
         <cucumber.version>1.2.5</cucumber.version>
         <spring.version>4.3.2.RELEASE</spring.version>
+        <logback.version>1.1.7</logback.version>
+        <rest-assured.version>3.0.0</rest-assured.version>
     </properties>
 
     <inceptionYear>2016</inceptionYear>
