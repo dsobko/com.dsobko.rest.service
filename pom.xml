@@ -18,6 +18,7 @@
     <modules>
         <module>service</module>
         <module>testing</module>
+        <module>service-performance</module>
     </modules>
 
 
@@ -32,6 +33,8 @@
         <spring.version>4.3.2.RELEASE</spring.version>
         <logback.version>1.1.7</logback.version>
         <rest-assured.version>3.0.0</rest-assured.version>
+        <gatling.version>2.1.7</gatling.version>
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
     </properties>
 
     <inceptionYear>2016</inceptionYear>
