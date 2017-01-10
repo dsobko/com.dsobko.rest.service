@@ -1,0 +1,36 @@
+= REST Service Documentation
+Dmitriy Sobko;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[introduction]
+== Introduction
+REST Service is a service that provides content based on included to the Mongo DB data.
+
+
+[[introduction-http-status-codes]]
+=== HTTP status codes
+
+|===
+| Status code | Usage
+
+| `200`  | Successful response
+| `500`  | Internal server error
+
+|===
+
+[[endpoint]]
+== Endpoint
+
+Returns JSON with person description based on person id.
+
+=== Request
+include::{snippets}/documentation/http-request.adoc[]
+
+=== Response
+include::{snippets}/documentation/http-response.adoc[]
+
