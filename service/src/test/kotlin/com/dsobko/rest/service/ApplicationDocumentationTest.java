@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = {Application.class})
 @WebIntegrationTest
 @ActiveProfiles("test")
-public class ApplicationDocumentation {
+public class ApplicationDocumentationTest {
 
     @ClassRule
     public static final SpringClassRule SPRING_CLASS_RULE = new SpringClassRule();
